@@ -18,10 +18,19 @@
             </div>
             <div class="product-info">
             <h3>Product goes here: {{product}}</h3>
-            <p> Description: {{description}}</p>
             <p v-if="inventory > 10">In stock</p>
             <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
             <p v-else > Out of Stock</p>
+            <ul>
+              <li v-for="(detail,index) in details" :key="index">{{detail}}</li>
+            </ul>
+            <ul>
+              <li> <div v-for="sieze in sizes">{{sieze}}</div></li>
+            </ul>
+            <ul>
+              <li v-for="variant in variants" :key="variant.id">{{variant.color}}</li>
+            </ul>
+            <hr>
             </div>  
         </div>
     </div>
