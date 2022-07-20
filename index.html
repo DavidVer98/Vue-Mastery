@@ -12,8 +12,10 @@
     <div id="app">
       <div class="nav-bar"></div>
       <div class="cart">
-        Cart ({{cart}})
-        <product-display :premium="premium"></product-display>
+        Cart ({{cart.length}})
+        <product-display :premium="premium" 
+        @add-to-cart="updateCart"
+        @remove-from-cart="removeById"></product-display>
       </div> 
 
     </div>

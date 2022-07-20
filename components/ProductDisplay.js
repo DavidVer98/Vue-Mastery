@@ -41,7 +41,7 @@ app.component('product-display',{
       <button 
       class="button"
       style="background-color:rgb(182, 59, 59) ;"
-      v-on:click="deleteToCart()"> Delete to Cart</button>
+      v-on:click="removeFromCart"> Delete to Cart</button>
   </div>
 </div>`,
 
@@ -68,22 +68,11 @@ methods:{
 
     },
     addToCart(){
-        this.cart +=1
-        this.inventory -=1
-        if( this.inventory == 0)
-            this.inStock = false
-        else
-            this.inStock = true
-        
+
+        this.$emit('add-to-cart',this.variants[this.selectedVariant].id)
     },
-    deleteToCart(){
-        if(this.cart > 0)
-            this.cart -=1
-            this.inventory +=1
-        if( this.inventory == 0)
-            this.inStock = false
-        else
-            this.inStock = true
+    removeFromCart(){
+        this.$emit('remove-from-cart', this.variants[this.selectedVariant].id)
 
     }
 },
