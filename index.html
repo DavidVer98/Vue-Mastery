@@ -13,47 +13,17 @@
       <div class="nav-bar"></div>
       <div class="cart">
         Cart ({{cart}})
+        <product-display :premium="premium"></product-display>
       </div> 
-        <div class="product-display">
-          <div class="product-container">
-            <div class="product-image">
-              <img  :src="image" :class="{ 'out-of-stock-img' : !inStock}" alt="">
-            </div>
-            <div class="product-info">
-            <h3>  {{title}}</h3>
-             <p v-if="onSale">{{ saleMessage }}</p>
-            <p v-if="inStock">In stock</p>
-            <p v-else > Out of Stock</p>
-            <ul>
-              <li v-for="(detail,index) in details" :key="index">{{detail}}</li>
-            </ul>
-            <ul>
-              <li> <div v-for="sieze in sizes">{{sieze}}</div></li>
-            </ul>
-            <ul>
-              <li  class="color-circle" 
-               v-for="(variant, index) in variants" 
-               :key="variant.id"
-               @mouseover="updateVariant(index)"
-               :style="{ backgroundColor: variant.color }">
-               </li>
-            </ul>
-            <hr>
-            </div> 
-            <button class="button" 
-            v-on:click="addToCart()" 
-            :class="{disabledButton : !inStock}"
-            :disabled ="!inStock"> Add to Cart</button>
-            <button 
-            class="button"
-            style="background-color:rgb(182, 59, 59) ;"
-            v-on:click="deleteToCart()"> Delete to Cart</button>
-        </div>
-    </div>
+
     </div>
 
     <!-- Import Js -->
     <script src="./main.js"></script>
+
+        <!-- Import Component -->
+        <script src="./components/ProductDisplay.js"></script>
+        <script src="./components/ProductDetails.js"></script>
 
     <!-- Mounted  App-->
     <script>
