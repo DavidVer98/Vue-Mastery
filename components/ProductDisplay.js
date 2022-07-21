@@ -43,6 +43,9 @@ app.component('product-display',{
       style="background-color:rgb(182, 59, 59) ;"
       v-on:click="removeFromCart"> Delete to Cart</button>
   </div>
+  <review-list :reviews="reviews"  v-if="reviews.length"></review-list>
+  <review-form @review-submitted="addReview"></review-form>
+
 </div>`,
 
 data: function(){
@@ -59,7 +62,8 @@ data: function(){
         sizes:['M','G','P'],
         // inStock : true,
         brand: 'Vue Mastery',
-        onSale : true
+        onSale : true,
+        reviews : []
     }
 },
 methods:{
@@ -74,6 +78,9 @@ methods:{
     removeFromCart(){
         this.$emit('remove-from-cart', this.variants[this.selectedVariant].id)
 
+    },
+    addReview(review){
+        this.reviews.push(review)
     }
 },
 
