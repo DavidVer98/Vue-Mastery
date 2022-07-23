@@ -13,4 +13,8 @@ export default {
   getEvents() {
     return apiClient.get("/events");
   },
+  getEvent(id) {
+    console.log(id);
+    return apiClient.get("/events/" + id);
+  },
 };
